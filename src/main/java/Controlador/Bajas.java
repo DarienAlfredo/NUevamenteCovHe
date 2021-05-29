@@ -42,4 +42,32 @@ public class Bajas extends Conexion{
 
         return false;
     }
+    public boolean elminarPublicacion(int id) {
+         PreparedStatement pst = null;
+
+        try {
+            String sql = "delete from publicaciones where id=?";
+
+            pst = getConnection().prepareStatement(sql);
+
+            pst.setInt(1, id);
+            
+            if (pst.executeUpdate() == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+        } finally {
+            try {
+                if (getConnection() != null) {
+                    getConnection().close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+            } catch (SQLException e) {
+            }
+        }
+
+        return false;
+    }
 }

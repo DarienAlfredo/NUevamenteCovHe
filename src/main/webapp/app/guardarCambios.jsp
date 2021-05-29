@@ -22,6 +22,8 @@
                 usuario.setCorreo(request.getParameter("correo"));
                 usuario.setContrasennia(request.getParameter("password"));
                 usuario.setNomUsuario(request.getParameter("usuario"));
+
+                
                 
                 System.out.println("Antes de los cambios");
                 Cambios cambios = new Cambios();

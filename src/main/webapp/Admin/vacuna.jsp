@@ -17,16 +17,16 @@
 
     <body id="body-pd">
 
-        <div class="l-navbar" id="navbar">
+                <div class="l-navbar" id="navbar">
             <nav class="nav">
                 <div>
                     <div class="nav__brand">
                         <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                        <a href="inicio.jsp" class="nav__logo">CovHe</a>
+                        <a href="Admin.jsp" class="nav__logo">CovHe</a>
                     </div>
                     <div class="nav__list">
 
-                        <a href="inicio.jsp" class="nav__link">
+                        <a href="Admin.jsp" class="nav__link">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Inicio</span>
                         </a>
@@ -53,7 +53,7 @@
                             </ul>
                         </div>
 
-                        <a href="foro.jsp" class="nav__link">
+                        <a href="Adminforo.jsp" class="nav__link">
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Foro</span>
                         </a>
@@ -63,15 +63,21 @@
                             <span class="nav__name">Aplicaciones</span>
                         </a>
 
-                        <a href="ajustes.jsp" class="nav__link">
-                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Ajustes</span>
-                        </a>
+                        <div class="nav__link collapse ">
+                            <ion-icon name="construct-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Administrar</span>
+                            <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+                            <ul class="collapse__menu">
+                                <a href="Usuarios.jsp" class="collapse__sublink">Usuarios</a>
+                                <a href="Publicaciones.jsp" class="collapse__sublink">Foro</a>
+                                <a href="Comentarios.jsp" class="collapse__sublink">Comentarios</a>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
 
-                <a href="salir.jsp" class="nav__link">
+                <a href="../app/salir.jsp" class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
                     <span class="nav__name">Salir</span>
                 </a>
@@ -106,7 +112,7 @@
                         </h4>
                         </aside>
                         <br><br><br>
-                        <img class="foto1" src="../assets/images/vacuna.jpg">
+                        <img class="foto1" src="../assets/images/vacuna.jpg" >
                         <br><br>
                         <br><br>
                         <br><br>

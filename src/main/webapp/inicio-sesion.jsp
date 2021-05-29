@@ -1,3 +1,4 @@
+<%@page import="Controlador.Conexion"%>
 <%@page import="Controlador.Usuario"%>
 <%@page import="Controlador.Consultas"%>
 <%@page import="Controlador.Altas"%>
@@ -8,7 +9,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    
+    Conexion con = new Conexion();
+    if (request.getParameter("formulario__btn")!=null){
+        
+    }
     if (session.getAttribute("usuario") != null) {
         response.sendRedirect("app/inicio.jsp");
     }
@@ -22,13 +26,25 @@
         usuario.setContrasennia(contrasennia);
 
         Consultas cons = new Consultas();
-        if (cons.auntenticarUsuario(usuario)) {
+          if (cons.auntenticarUsuario(usuario)) {
             Consultas c = new Consultas();
             usuario = c.consultarUsuario(nomUsuario, contrasennia);
+            switch(cons.logear(nomUsuario, contrasennia)){
+                case 1:
+                    session.setAttribute("usuario", usuario);
+                    session.setAttribute("nivel", "1");
+                    response.sendRedirect("Admin/Admin.jsp");
+                break;
+                case 2:
+                    session.setAttribute("usuario", usuario);
+                    session.setAttribute("nivel", "2");
+                    response.sendRedirect("app/inicio.jsp");
+                break;
+            }
 
-            session.setAttribute("usuario", usuario);
-            response.sendRedirect("app/inicio.jsp");
-        } else {
+            /*session.setAttribute("usuario", usuario);
+            response.sendRedirect("app/inicio.jsp");*/
+        }  else {
             response.sendRedirect("inicio-sesion.jsp");
         }
     }

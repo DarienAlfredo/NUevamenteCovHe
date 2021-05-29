@@ -12,7 +12,7 @@ public class Altas extends Conexion {
 
         try {
             String sql = "insert into usuarios"
-                    + "(nombre, apellidos, nomUsuario, correo, contrasennia,idTipoUsuario, fechaCreacion) "
+                    + "(nombre, apellidos, nomUsuario, correo, contrasennia,nivel, fechaCreacion) "
                     + "values(?,?,?,?,?,2,CURRENT_TIMESTAMP());";
 
             pst = getConnection().prepareStatement(sql);

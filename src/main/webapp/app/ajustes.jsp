@@ -1,4 +1,11 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="Controlador.Usuario"%>
+<%@page import="Controlador.Consultas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%><!DOCTYPE html>
 
 <html>
@@ -185,6 +192,8 @@
                     </div>
                 </div>
             </form>
+
+
         </main>
         <!-- ===== IONICONS ===== -->
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>

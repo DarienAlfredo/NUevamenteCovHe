@@ -4,35 +4,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
         <meta charset="UTF-8" />
         <title>Aplicaciones</title>
         <link rel="shortcut icon" href="../assets/images/logo-covhe.svg" type="image/x-icon">
         <link rel="stylesheet" href="../assets/css/covhe.css" />
         <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     </head>
-        <%
-            String cod = request.getParameter("cod");
-            Connection cnx = null;
-            ResultSet rs = null;
-            Statement sta = null;
-            try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            cnx = DriverManager.getConnection("jdbc:mysql://"
-            + "localhost:3306/covhe?autoReconnect=true&useSSL=false","root","Patatasfritas1");//aqui van tus datos
-            sta = cnx.createStatement();
-        %>
+       
     <body class="light" id="body-pd">
-        <div class="l-navbar" id="navbar">
+                <div class="l-navbar" id="navbar">
             <nav class="nav">
                 <div>
                     <div class="nav__brand">
                         <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                        <a href="inicio.jsp" class="nav__logo">CovHe</a>
+                        <a href="Admin.jsp" class="nav__logo">CovHe</a>
                     </div>
                     <div class="nav__list">
 
-                        <a href="inicio.jsp" class="nav__link">
+                        <a href="Admin.jsp" class="nav__link">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Inicio</span>
                         </a>
@@ -59,7 +49,7 @@
                             </ul>
                         </div>
 
-                        <a href="foro.jsp" class="nav__link">
+                        <a href="Adminforo.jsp" class="nav__link">
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Foro</span>
                         </a>
@@ -69,15 +59,21 @@
                             <span class="nav__name">Aplicaciones</span>
                         </a>
 
-                        <a href="ajustes.jsp" class="nav__link">
-                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Ajustes</span>
-                        </a>
+                        <div class="nav__link collapse ">
+                            <ion-icon name="construct-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Administrar</span>
+                            <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+                            <ul class="collapse__menu">
+                                <a href="Usuarios.jsp" class="collapse__sublink">Usuarios</a>
+                                <a href="Publicaciones.jsp" class="collapse__sublink">Foro</a>
+                                <a href="Comentarios.jsp" class="collapse__sublink">Comentarios</a>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
 
-                <a href="salir.jsp" class="nav__link">
+                <a href="../app/salir.jsp" class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
                     <span class="nav__name">Salir</span>
                 </a>
@@ -85,6 +81,17 @@
         </div>
 
         <header class="header">
+            <%
+            String cod = request.getParameter("cod");
+            Connection cnx = null;
+            ResultSet rs = null;
+            Statement sta = null;
+            try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            cnx = DriverManager.getConnection("jdbc:mysql://"
+            + "localhost:3306/covhe?autoReconnect=true&useSSL=false","root","Patatasfritas1");//aqui van tus datos
+            sta = cnx.createStatement();
+        %>
             <h1>Inicio</h1>
         </header>
 
@@ -104,18 +111,18 @@
                 <div class="wrapper-form wrapper">
                     <div class="title">Selecione sus Sintomas</div>
                     <div class="box">
-                        <input type="checkbox" name="select" id="option-1"  value="1"/>
-                        <input type="checkbox" name="select" id="option-2" value="2"/>
-                        <input type="checkbox" name="select" id="option-3" value="3"/>
-                        <input type="checkbox" name="select" id="option-4" value="4"/>
-                        <input type="checkbox" name="select" id="option-5" value="5"/>
-                        <input type="checkbox" name="select" id="option-6" value="6"/>
-                        <input type="checkbox" name="select" id="option-7" value="7"/>
-                        <input type="checkbox" name="select" id="option-8" value="8"/>
-                        <input type="checkbox" name="select" id="option-9" value="9"/>
-                        <input type="checkbox" name="select" id="option-10" value="10"/>
-                        <input type="checkbox" name="select" id="option-11" value="11"/>
-                        <input type="checkbox" name="select" id="option-12" value="12"/>
+                        <input type="checkbox" name="select1" id="option-1"  value="1"/>
+                        <input type="checkbox" name="select2" id="option-2" value="2"/>
+                        <input type="checkbox" name="select3" id="option-3" value="3"/>
+                        <input type="checkbox" name="select4" id="option-4" value="4"/>
+                        <input type="checkbox" name="select5" id="option-5" value="5"/>
+                        <input type="checkbox" name="select6" id="option-6" value="6"/>
+                        <input type="checkbox" name="select7" id="option-7" value="7"/>
+                        <input type="checkbox" name="select8" id="option-8" value="8"/>
+                        <input type="checkbox" name="select9" id="option-9" value="9"/>
+                        <input type="checkbox" name="select10" id="option-10" value="10"/>
+                        <input type="checkbox" name="select11" id="option-11" value="11"/>
+                        <input type="checkbox" name="select12" id="option-12" value="12"/>
 
                         <label for="option-1" class="option-1">
                             <div class="dot"></div>
@@ -181,7 +188,6 @@
                         </div>
                     </div>
                 </div>
-            </form>
         </main>
               <%
             } catch (SQLException error) {
@@ -194,10 +200,20 @@
 ;                }
             }
             if(request.getParameter("btngrabar") != null){
-                String uno = request.getParameter("select1");
-                String titu = request.getParameter("select2");
-                int cos = Integer.parseInt(request.getParameter("txtcosto"));
-                sta.execute("insert into artistas values ('"+uno+"','"+titu+"',"+cos+");");
+                int uno = Integer.parseInt(request.getParameter("select1"));
+                int dos = Integer.parseInt(request.getParameter("select2"));
+                int tres = Integer.parseInt(request.getParameter("select3"));
+                int cua = Integer.parseInt(request.getParameter("select4"));
+                int cin = Integer.parseInt(request.getParameter("select5"));
+                int sei = Integer.parseInt(request.getParameter("select6"));
+                int sie = Integer.parseInt(request.getParameter("select7"));
+                int och = Integer.parseInt(request.getParameter("select8"));
+                int nue = Integer.parseInt(request.getParameter("select9"));
+                int diez = Integer.parseInt(request.getParameter("select10"));
+                int onc = Integer.parseInt(request.getParameter("select11"));
+                int doc = Integer.parseInt(request.getParameter("select12"));
+                sta.execute("insert into sintomas values ('"+uno+"','"+dos+"',"+tres+",'"+cua+"','"+cin+"','"+sei+"',"
++ "             '"+sie+"','"+och+"','"+nue+"','"+diez+"','"+onc+"','"+doc+"');");
                 //request.getRequestDispatcher("aplicaciones-grafico.jsp").forward(request, response);
                 sta.close();
                 rs.close();
@@ -211,5 +227,5 @@
         <script src="../assets/js/form.js"></script>
 
     </body>
-
 </html>
+
